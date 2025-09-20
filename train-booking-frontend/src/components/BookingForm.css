@@ -1,0 +1,63 @@
+.booking-container {
+  max-width: 500px;
+  margin: 50px auto;
+  background: #ffffff; /* clean white card */
+  padding: 35px 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* subtle shadow */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.booking-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.booking-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2c3e50; /* professional dark slate */
+  font-weight: 600;
+}
+
+.booking-form input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+.booking-form input:focus {
+  border-color: #2c3e50;
+  box-shadow: 0 0 6px rgba(44, 62, 80, 0.3);
+  outline: none;
+}
+
+.booking-form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background-color: #2c3e50; /* professional dark slate */
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.booking-form button:hover {
+  background-color: #1a252f; /* darker hover shade */
+  transform: translateY(-2px);
+}
+
+.booking-form button:disabled {
+  background-color: #a0a8b5; /* muted disabled color */
+  cursor: not-allowed;
+}

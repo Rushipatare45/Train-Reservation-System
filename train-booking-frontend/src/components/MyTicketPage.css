@@ -1,0 +1,169 @@
+/* Ticket Wrapper (center cards) */
+.ticket-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  min-height: 100vh;
+  background: #edf1f7; /* light professional background */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Ticket Card (Square with ticket effect) */
+.ticket-card {
+  width: 300px;
+  height: 320px;
+  background: #ffffff; /* clean white card */
+  border-radius: 14px;
+  border: 1px solid #d1d9e6; /* subtle professional border */
+  position: relative;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ticket-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* Ticket cut effect */
+.ticket-card::before,
+.ticket-card::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  background: #edf1f7;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.ticket-card::before {
+  left: -10px;
+}
+
+.ticket-card::after {
+  right: -10px;
+}
+
+/* ---------- HEADER ---------- */
+.ticket-header {
+  text-align: center;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #cfd8e6;
+}
+
+.ticket-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0d47a1;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #1565c0, #42a5f5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ticket-header p {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* ---------- JOURNEY ---------- */
+.ticket-journey {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 0;
+}
+
+.station h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a237e;
+}
+
+.station p {
+  margin: 2px 0 0;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.duration {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #0d47a1;
+  font-weight: 600;
+}
+
+/* ---------- PASSENGER SECTION ---------- */
+.ticket-passengers {
+  margin-top: 6px;
+  background: #e3f2fd; /* soft light blue for section */
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.passenger-header,
+.passenger-info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.passenger-header {
+  font-weight: 700;
+  color: #0d47a1;
+  border-bottom: 1px solid #bbdefb;
+  padding-bottom: 4px;
+}
+
+.passenger-info {
+  color: #222;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* ---------- ACTION BUTTON ---------- */
+.ticket-action {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.ticket-action button {
+  background-color: #1565c0;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.ticket-action button:hover {
+  background-color: #0d47a1;
+  transform: translateY(-2px);
+}
+
+.ticket-date {
+  margin: 4px 0 8px;
+  font-size: 0.9rem;
+  color: #0d47a1;
+  font-weight: 600;
+}

@@ -1,0 +1,99 @@
+/* src/pages/RegisterPage.css */
+
+/* Container */
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f4f6f8; /* same as login */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Card */
+.register-card {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.register-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Title */
+.register-title {
+  color: #2c3e50;
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+/* Form Inputs */
+.register-form input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: 0.3s;
+  box-sizing: border-box;
+}
+
+.register-form input:focus {
+  outline: none;
+  border-color: #2c3e50;
+  box-shadow: 0 0 6px rgba(44, 62, 80, 0.3);
+}
+
+/* Button */
+.register-form button {
+  width: 100%;
+  padding: 12px;
+  background: #2c3e50;
+  color: #fff;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.register-form button:hover {
+  background: #1a252f;
+}
+
+/* Message */
+.register-message {
+  margin-top: 15px;
+  color: #e63946; /* red for errors */
+  font-weight: 600;
+}
+
+.login-text {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #444;
+  text-align: center;
+}
+
+.register-button {
+  background: none;
+  border: none;
+  color: #2c3e50;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.register-button:hover {
+  color: #1a252f;
+}

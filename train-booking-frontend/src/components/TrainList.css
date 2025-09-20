@@ -1,0 +1,51 @@
+/* src/components/TrainList.css */
+.train-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.train-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-radius: 10px;
+  background: #f8f9fa;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.train-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.train-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.train-name {
+  font-weight: bold;
+  color: #007bff;
+  font-size: 1.1rem;
+}
+
+.train-stops {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.book-button {
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.book-button:hover {
+  background-color: #005fcc;
+}

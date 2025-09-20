@@ -1,0 +1,152 @@
+/* Ticketcard.css */
+
+/* Container for all tickets */
+.ticket-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px;
+  background-color: #f4f6f8; /* light professional background */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Individual ticket card */
+.ticket-card {
+  width: 320px;
+  background-color: #ffffff; /* clean white card */
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); /* subtle shadow */
+  padding: 20px;
+  position: relative;
+  border-left: 6px solid #2c3e50; /* professional accent */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ticket-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Ticket Header */
+.ticket-header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.ticket-header h1 {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: #2c3e50; /* dark slate for professionalism */
+}
+
+.ticket-header p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Journey section */
+.ticket-journey {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.ticket-journey h2 {
+  font-size: 16px;
+  margin: 0;
+  color: #2c3e50;
+}
+
+.ticket-journey p {
+  font-size: 12px;
+  color: #777;
+  margin: 2px 0 0 0;
+}
+
+.ticket-arrow {
+  font-size: 20px;
+  color: #2c3e50; /* consistent with professional palette */
+}
+
+/* Details section */
+.ticket-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.ticket-details div {
+  width: 45%;
+  margin-bottom: 8px;
+}
+
+.ticket-details span {
+  display: block;
+  font-size: 10px;
+  color: #888;
+}
+
+.ticket-details p {
+  font-size: 14px;
+  margin: 2px 0 0 0;
+  color: #333;
+}
+
+/* Passenger info */
+.ticket-passenger {
+  margin-bottom: 15px;
+}
+
+.ticket-passenger span {
+  display: block;
+  font-size: 10px;
+  color: #888;
+}
+
+.ticket-passenger p {
+  font-size: 14px;
+  margin: 2px 0 0 0;
+  color: #333;
+}
+
+/* Barcode */
+.ticket-barcode {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.ticket-barcode img {
+  width: 100%;
+  max-width: 250px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/* Download button */
+.download-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #2c3e50; /* professional dark slate */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.download-btn:hover {
+  background-color: #1a252f; /* darker hover shade */
+  transform: translateY(-2px);
+}
+
+/* Responsive for mobile */
+@media screen and (max-width: 350px) {
+  .ticket-card {
+    width: 90%;
+  }
+}

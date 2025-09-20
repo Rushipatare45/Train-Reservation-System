@@ -1,0 +1,129 @@
+/* Container */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f4f6f8; /* light professional background */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Card */
+.login-card {
+  background: #ffffff; /* clean white card */
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Title */
+.login-title {
+  color: #2c3e50; /* professional dark slate */
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+/* Form Inputs */
+.login-form input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: 0.3s;
+  box-sizing: border-box; /* ensures equal width */
+}
+
+/* Input focus */
+.login-form input:focus {
+  outline: none;
+  border-color: #2c3e50;
+  box-shadow: 0 0 6px rgba(44, 62, 80, 0.3);
+}
+
+/* Password field container */
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Password input same width as others */
+.password-container input {
+  width: 100%;
+  padding-right: 40px; /* space for the icon */
+  box-sizing: border-box;
+}
+
+/* Eye icon */
+.password-icon {
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+  color: #888;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.password-icon:hover {
+  color: #2c3e50;
+}
+
+/* Login button */
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  background: #2c3e50; /* professional slate */
+  color: #fff;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-form button:hover {
+  background: #1a252f; /* darker shade */
+}
+
+/* Message */
+.login-message {
+  margin-top: 15px;
+  color: #28a745; /* green for success */
+  font-weight: 600;
+}
+
+.register-text {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #444;
+}
+
+.register-button {
+  background: none;
+  border: none;
+  color: #2c3e50;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.register-button:hover {
+  color: #1a252f;
+}
+

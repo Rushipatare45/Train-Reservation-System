@@ -1,0 +1,227 @@
+/* ========== Homepage Wrapper ========== */
+.homepage {
+  font-family: "Segoe UI", sans-serif;
+  background: #f9f9f9; /* light background */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========== Header ========== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 40px;
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  font-size: 28px;
+  color: #1e8f4d;
+  margin-right: 8px;
+}
+
+.logo-text {
+  font-size: 22px;
+  font-weight: bold;
+  color: #1e8f4d;
+}
+
+.nav-links a {
+  margin-left: 28px;
+  text-decoration: none;
+  color: #555;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-links a:hover {
+  color: #1e8f4d;
+}
+
+/* ========== Search Section ========== */
+.search-section {
+  text-align: center;
+  padding: 40px 20px 20px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #2a2a2a;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.search-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  flex-wrap: wrap;
+}
+
+.search-card input {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  min-width: 180px;
+  outline: none;
+}
+
+.search-card input:focus {
+  border-color: #1e8f4d;
+  box-shadow: 0 0 4px rgba(30, 143, 77, 0.2);
+}
+
+.search-btn {
+  background: #28a745;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.search-btn:hover {
+  background: #218838;
+}
+
+/* ========== Banner Area ========== */
+.banner-area {
+  margin-top: 30px;
+  height: 200px;
+  background: url("../assets/banner.png") center/cover no-repeat;
+  border-radius: 12px;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 14px 20px;
+  }
+
+  .search-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-card input {
+    min-width: 100%;
+  }
+
+  .search-btn {
+    width: 100%;
+  }
+
+  .banner-area {
+    height: 150px;
+    border-radius: 8px;
+  }
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #f5f5f5; /* light gray background */
+  color: #333;
+  padding: 40px 20px 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-section {
+  flex: 1 1 200px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  margin-bottom: 15px;
+  color: #1e8f4d; /* green accent */
+}
+
+.footer-section p,
+.footer-section ul,
+.footer-section li {
+  margin: 5px 0;
+  color: #555;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li a {
+  color: #555;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #1e8f4d;
+}
+
+.footer-section .social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.footer-section .social-icons a {
+  color: #555;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.footer-section .social-icons a:hover {
+  color: #1e8f4d;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* ========== Banner Area ========== */
+.banner-area {
+  margin-top: 30px;
+  height: 300px; /* fixed height for professional look */
+  background: url("../assets/banner.png") center center/cover no-repeat;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Optional: make it responsive */
+@media (max-width: 768px) {
+  .banner-area {
+    height: 180px; /* smaller height for mobile */
+    border-radius: 8px;
+  }
+}

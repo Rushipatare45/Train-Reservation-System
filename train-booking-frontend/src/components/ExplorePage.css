@@ -1,0 +1,11 @@
+.explore-page {
+  max-width: 800px;
+  margin: 20px auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* more professional font */
+}
+
+.explore-page h1 {
+  text-align: center;
+  color: #2c3e50; /* professional dark slate */
+  margin-bottom: 20px;
+}
