@@ -10,13 +10,22 @@ import com.example.Reservation_System.repository.UserRepository;
 import com.example.Reservation_System.utils.FareCalculator;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import java.security.SecureRandom;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.ByteArrayOutputStream;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
+
 
 @RestController
 @RequestMapping("/booking")
@@ -46,7 +55,7 @@ public class BookingController {
                                  @RequestParam String date,
                                  @RequestParam String time) {
 
-        // --- Validate date ---
+        // Validate date
         LocalDate travelDate;
         try {
             travelDate = LocalDate.parse(date);
@@ -54,7 +63,7 @@ public class BookingController {
             throw new IllegalArgumentException("Invalid date format. Use YYYY-MM-DD");
         }
 
-        // --- Validate time ---
+        // Validate time
         LocalTime travelTime;
         try {
             travelTime = LocalTime.parse(time);
@@ -62,15 +71,15 @@ public class BookingController {
             throw new IllegalArgumentException("Invalid time format. Use HH:mm");
         }
 
-        // --- Fetch train ---
+        // Fetch train
         Train train = trainRepository.findById(trainId)
                 .orElseThrow(() -> new RuntimeException("Train not found"));
 
-        // --- Fetch user ---
+        // Fetch user
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        // --- Validate stations ---
+        // Validate stations
         List<String> stops = train.getStops();
         int fromIndex = stops.indexOf(fromStation);
         int toIndex = stops.indexOf(toStation);
@@ -78,7 +87,7 @@ public class BookingController {
             throw new RuntimeException("Invalid station selection!");
         }
 
-        // --- Mark existing booked segments ---
+        // Mark existing booked segments
         List<Booking> existingBookings = bookingRepository.findByTrainIdAndDate(trainId, date);
         for (Booking b : existingBookings) {
             Coach coach = train.getCoaches().stream()
@@ -93,7 +102,7 @@ public class BookingController {
             }
         }
 
-        // --- Find first available seat ---
+        // Find first available seat
         for (Coach coach : train.getCoaches()) {
             coach.initializeSeatsIfNeeded();
             int totalSeats = coach.getSeats().size();
@@ -150,6 +159,45 @@ public class BookingController {
     @GetMapping("/my")
     public List<Booking> getMyBookings(@RequestParam Long userId) {
         return bookingRepository.findByUserId(userId);
+    }
+
+    // ---------------- Download Ticket by ID ----------------
+    @GetMapping("/download/{id}")
+    public ResponseEntity<byte[]> downloadTicket(@PathVariable Long id) {
+        Booking booking = bookingRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Booking not found with ID: " + id));
+
+        try {
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            Document document = new Document();
+            PdfWriter.getInstance(document, out);
+            document.open();
+
+            document.add(new Paragraph("----- Train Ticket -----"));
+            document.add(new Paragraph("PNR: " + booking.getPnr()));
+            document.add(new Paragraph("Passenger: " + booking.getPassengerName()));
+            document.add(new Paragraph("Train: " + booking.getTrain().getName()));
+            document.add(new Paragraph("Coach: " + booking.getCoachName()));
+            document.add(new Paragraph("Seat: " + booking.getSeatNumber()));
+            document.add(new Paragraph("From: " + booking.getFromStation()));
+            document.add(new Paragraph("To: " + booking.getToStation()));
+            document.add(new Paragraph("Date: " + booking.getDate()));
+            document.add(new Paragraph("Departure: " + booking.getTime()));
+            document.add(new Paragraph("Arrival: " + booking.getArrivalTime()));
+            document.add(new Paragraph("Fare: ₹" + booking.getFare()));
+
+            document.close();
+
+            byte[] pdfBytes = out.toByteArray();
+
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=ticket_" + id + ".pdf")
+                    .contentType(MediaType.APPLICATION_PDF)
+                    .body(pdfBytes);
+
+        } catch (DocumentException e) {
+            throw new RuntimeException("Error generating ticket PDF", e);
+        }
     }
 
     // ---------------- PNR Generator ----------------

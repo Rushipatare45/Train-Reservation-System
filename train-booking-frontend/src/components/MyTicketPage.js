@@ -7,7 +7,6 @@ function MyTicketPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // ✅ Get logged-in user ID from localStorage
   const userId = localStorage.getItem("userId");
 
   useEffect(() => {
@@ -21,6 +20,7 @@ function MyTicketPage() {
         const res = await axios.get(`http://localhost:8080/booking/my?userId=${userId}`);
         setBookings(res.data);
       } catch (err) {
+        console.error("Error fetching bookings:", err);
         setError("❌ Failed to fetch your bookings");
       } finally {
         setLoading(false);
@@ -28,6 +28,30 @@ function MyTicketPage() {
     };
     fetchBookings();
   }, [userId]);
+
+  // ✅ Download ticket function
+  const downloadTicket = async (bookingId) => {
+    console.log("Downloading ticket for bookingId:", bookingId); // debug log
+
+    try {
+      const res = await axios.get(
+        `http://localhost:8080/booking/download/${bookingId}`, // ✅ ensure no newline
+        { responseType: "blob" } // important for binary files
+      );
+
+      // Create a URL and trigger download
+      const url = window.URL.createObjectURL(new Blob([res.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", `ticket_${bookingId}.pdf`);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    } catch (err) {
+      console.error("❌ Failed to download ticket", err);
+      alert("Download failed. Please try again.");
+    }
+  };
 
   // Format date as "14 Sep 2025"
   const formatDate = (dateString) => {
@@ -83,7 +107,7 @@ function MyTicketPage() {
             </div>
 
             <div className="ticket-action">
-              <button>Download Ticket</button>
+              <button onClick={() => downloadTicket(b.id)}>Download Ticket</button>
             </div>
           </div>
         ))
