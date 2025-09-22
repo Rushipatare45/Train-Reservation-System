@@ -1,5 +1,8 @@
+// src/components/MyTicketPage.js
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { BASE_URL } from "../config"; // import BASE_URL from config.js
 import "./MyTicketPage.css";
 
 function MyTicketPage() {
@@ -17,7 +20,7 @@ function MyTicketPage() {
         return;
       }
       try {
-        const res = await axios.get(`http://localhost:8080/booking/my?userId=${userId}`);
+        const res = await axios.get(`${BASE_URL}/booking/my?userId=${userId}`);
         setBookings(res.data);
       } catch (err) {
         console.error("Error fetching bookings:", err);
@@ -31,15 +34,12 @@ function MyTicketPage() {
 
   // ✅ Download ticket function
   const downloadTicket = async (bookingId) => {
-    console.log("Downloading ticket for bookingId:", bookingId); // debug log
-
     try {
       const res = await axios.get(
-        `http://localhost:8080/booking/download/${bookingId}`, // ✅ ensure no newline
+        `${BASE_URL}/booking/download/${bookingId}`,
         { responseType: "blob" } // important for binary files
       );
 
-      // Create a URL and trigger download
       const url = window.URL.createObjectURL(new Blob([res.data]));
       const link = document.createElement("a");
       link.href = url;

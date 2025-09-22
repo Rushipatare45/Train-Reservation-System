@@ -1,7 +1,9 @@
 // src/components/TrainList.js
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
+import { BASE_URL } from "../config"; // ✅ import BASE_URL
 
 function TrainList() {
   const [trains, setTrains] = useState([]);
@@ -37,7 +39,6 @@ function TrainList() {
     bhubaneswar: "Bhubaneswar",
   };
 
-  // Convert user input to backend-required station
   const mapToBackendStation = (station) => {
     if (!station) return "";
     const key = station.toLowerCase().trim();
@@ -54,14 +55,11 @@ function TrainList() {
     setLoading(true);
     setError(null);
 
-    // Map input
     const fromMapped = mapToBackendStation(fromStation);
     const toMapped = mapToBackendStation(toStation);
 
     axios
-      .get(
-        `http://localhost:8080/trains/search?fromStation=${fromMapped}&toStation=${toMapped}`
-      )
+      .get(`${BASE_URL}/trains/search?fromStation=${fromMapped}&toStation=${toMapped}`)
       .then((response) => {
         console.log("API Response:", response.data);
 
@@ -72,7 +70,7 @@ function TrainList() {
           data = response.data.trains;
         }
 
-        // 🔑 Case-insensitive + order filtering on frontend too
+        // Case-insensitive + order filtering on frontend
         const filteredTrains = data.filter((train) => {
           if (!Array.isArray(train.stops) || train.stops.length === 0) return false;
 

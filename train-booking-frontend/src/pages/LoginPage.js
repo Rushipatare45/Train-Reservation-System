@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; 
 import "./LoginPage.css";
+import { BASE_URL } from "../config";
 
 function LoginPage({ setUser }) {
   const [email, setEmail] = useState("");
@@ -21,7 +22,7 @@ function LoginPage({ setUser }) {
     }
 
     try {
-      const res = await axios.post("http://localhost:8080/api/users/login", { email, password });
+      const res = await axios.post(`${BASE_URL}/api/users/login`, { email, password });
       const userData = res.data;
 
       // ✅ Save full user object in localStorage (including ID)

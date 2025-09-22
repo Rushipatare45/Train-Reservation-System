@@ -1,5 +1,8 @@
+// src/components/RegisterPage.js
+
 import React, { useState } from "react";
 import axios from "axios";
+import { BASE_URL } from "../config"; // import BASE_URL from config.js
 
 function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -15,7 +18,7 @@ function RegisterPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8080/api/users/register", formData);
+      const response = await axios.post(`${BASE_URL}/api/users/register`, formData);
       alert(response.data);
     } catch (error) {
       alert(error.response?.data || "Registration failed");
@@ -26,9 +29,33 @@ function RegisterPage() {
     <div style={{ textAlign: "center", marginTop: "50px" }}>
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="name" placeholder="Full Name" onChange={handleChange} required /><br /><br />
-        <input type="email" name="email" placeholder="Email" onChange={handleChange} required /><br /><br />
-        <input type="password" name="password" placeholder="Password" onChange={handleChange} required /><br /><br />
+        <input
+          type="text"
+          name="name"
+          placeholder="Full Name"
+          onChange={handleChange}
+          required
+        />
+        <br />
+        <br />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          onChange={handleChange}
+          required
+        />
+        <br />
+        <br />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          onChange={handleChange}
+          required
+        />
+        <br />
+        <br />
         <button type="submit">Register</button>
       </form>
     </div>

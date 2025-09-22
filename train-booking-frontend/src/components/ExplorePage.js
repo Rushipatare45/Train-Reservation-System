@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
+import { BASE_URL } from "../config";
 
 function TrainList() {
   const [trains, setTrains] = useState([]);
@@ -21,8 +22,8 @@ function TrainList() {
 
     const url =
       fromStation && toStation
-        ? `http://localhost:8080/trains/search?fromStation=${fromStation}&toStation=${toStation}`
-        : "http://localhost:8080/trains/all";
+        ? `${BASE_URL}/trains/search?fromStation=${fromStation}&toStation=${toStation}`
+        : `${BASE_URL}/trains/all`;
 
     axios
       .get(url)

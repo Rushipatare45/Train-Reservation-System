@@ -1,7 +1,9 @@
 // src/components/BookingForm.js
+
 import React, { useState, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from "../config";
 import "./BookingForm.css";
 
 function loadRazorpayScript() {
@@ -44,7 +46,7 @@ function BookingForm() {
   useEffect(() => {
     if (!selectedTrain) {
       axios
-        .get(`http://localhost:8080/trains/${id}`)
+        .get(`${BASE_URL}/trains/${id}`)
         .then((res) => setTrain(res.data))
         .catch((err) => {
           console.error("Failed to fetch train:", err);
@@ -122,7 +124,7 @@ function BookingForm() {
         time: train.departureTime || "10:00",
       }).toString();
 
-      const url = `http://localhost:8080/booking/create?${query}`;
+      const url = `${BASE_URL}/booking/create?${query}`;
       const response = await axios.post(url);
 
       alert(
